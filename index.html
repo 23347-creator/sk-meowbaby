@@ -379,12 +379,11 @@ h1 {
 </style>
 </head>
 <body>
-  <audio id="soundWin" src="win.mp3"></audio>
-<audio id="soundLoss" src="loss.mp3"></audio>
-<audio id="soundNew" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg"></audio>
+  <audio id="soundWin" src="https://23347-creator.github.io/sk-meowbaby/win.mp3"></audio>
+<audio id="soundLoss" src="https://23347-creator.github.io/sk-meowbaby/loss.mp3"></audio>
   <div class="container">
     <header>
-      <h1>SK MEOW BABY</h1>
+      <h1> MEOW BABY</h1>
       <p class="subtitle">
         HACKER BLUEBEE 2.0
       </p>
@@ -1509,5 +1508,19 @@ function sendToTelegram(message) {
   }).catch(err => console.error("Telegram Error", err));
 }
   </script>
+<script>
+document.addEventListener("click", enableSound, { once: true });
+document.addEventListener("touchstart", enableSound, { once: true });
+
+function enableSound() {
+  const audio = new Audio();
+  audio.src = "win.mp3"; // or any sound file
+  audio.play().then(() => {
+    audio.pause();
+    audio.currentTime = 0;
+    console.log("Sound unlocked");
+  }).catch(() => {});
+}
+</script>
 </body>
 </html>
