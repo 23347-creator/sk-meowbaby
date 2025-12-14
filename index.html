@@ -49,7 +49,33 @@ header {
   border: 2px solid #2563eb;
   box-shadow: 0 0 30px rgba(37, 99, 235, 0.45);
 }
+/* 🪩 WIN ONLY – DISCO GLOW */
+.ring-header.win-disco::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 22px;
+  background: linear-gradient(
+    45deg,
+    red,
+    blue,
+    cyan,
+    lime,
+    magenta,
+    yellow,
+    red
+  );
+  background-size: 500% 500%;
+  filter: blur(14px);
+  z-index: -1;
+  animation: winDisco 1.2s linear infinite;
+}
 
+@keyframes winDisco {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 h1 {
   font-size: 2.3rem;
   background: linear-gradient(90deg, #2563eb, #60a5fa, #ef4444);
@@ -382,10 +408,10 @@ h1 {
   <audio id="soundWin" src="https://23347-creator.github.io/sk-meowbaby/win.mp3"></audio>
 <audio id="soundLoss" src="https://23347-creator.github.io/sk-meowbaby/loss.mp3"></audio>
   <div class="container">
-    <header>
+    <header class="ring-header">
       <h1> MEOW BABY</h1>
       <p class="subtitle">
-        SOMESH BLUEBEE 07
+         BLUEBEE SOMESH 07
       </p>
       <div id="apiStatus">API: CHECKING...</div>
 </header>
@@ -1195,12 +1221,26 @@ Violet in Matched Pair: ${log.violetInMatchedPair}
 const winSound = document.getElementById("soundWin");
 const lossSound = document.getElementById("soundLoss");
 
+const header = document.querySelector(".ring-header");
+
 if (isWin) {
   winSound.currentTime = 0;
   winSound.play().catch(()=>{});
+
+  // 🪩 WIN DISCO ON
+  header.classList.add("win-disco");
+
+  // auto stop disco after 5 seconds (optional)
+  setTimeout(() => {
+    header.classList.remove("win-disco");
+  }, 5000);
+
 } else {
   lossSound.currentTime = 0;
   lossSound.play().catch(()=>{});
+
+  // ❌ STOP DISCO ON LOSS
+  header.classList.remove("win-disco");
 }
         const idx = consoleLogs.findIndex(
           log => log.period === prediction.period
