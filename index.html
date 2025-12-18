@@ -39,7 +39,6 @@ body {
   display: inline-block;
 }
   
- 
 /* ===== HEADER ===== */
 header {
   text-align: center;
@@ -90,6 +89,318 @@ h1 {
   color: #93c5fd;
   opacity: 0.85;
 }
+  
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== CARD ===== */
+.card {
+  background: radial-gradient(circle at top, rgba(15,23,42,.95), rgba(2,6,23,.95));
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(96,165,250,.25);
+  box-shadow: 0 0 25px rgba(37,99,235,.25);
+}
+
+.card h2 {
+  color: #60a5fa;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px rgba(96,165,250,.6);
+}
+
+/* ===== PREDICTION ===== */
+.prediction-box {
+  text-align: center;
+  padding: 16px;
+  background: radial-gradient(circle at top, rgba(37,99,235,.12), rgba(0,0,0,.95));
+  border-radius: 12px;
+  border: 1px solid rgba(37,99,235,.5);
+  box-shadow: 0 0 25px rgba(37,99,235,.45);
+}
+
+.prediction-value {
+  font-size: 2.7rem;
+  font-weight: bold;
+  color: #f8fafc;
+  text-shadow: 0 0 14px rgba(96,165,250,.8);
+}
+
+/* ===== COLORS ===== */
+.red { color: #ef4444; }
+.green { color: #22c55e; }
+.violet { color: #a855f7; }
+
+/* ===== STATUS ===== */
+.status {
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.win {
+  background: rgba(34,197,94,.15);
+  color: #22c55e;
+}
+
+.loss {
+  background: rgba(239,68,68,.15);
+  color: #ef4444;
+}
+
+/* ===== BUTTON ===== */
+.new-session-btn {
+  background: linear-gradient(135deg, #2563eb, #ef4444);
+  color: #fff;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ===== RULE ANALYSIS ===== */
+.rule-analysis {
+  margin-top: 6px;
+  padding: 10px;
+  background: rgba(255,255,255,.03);
+  border-radius: 8px;
+  border: 1px solid rgba(96,165,250,.25);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.rule-analysis-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: .82rem;
+}
+
+/* 🔥 HIDE RULE NAME TEXT (fallback_opposite_above etc.) */
+.rule-analysis-item span:first-child {
+  display: none;
+}
+
+/* ===== MATCHED PAIR ANALYSIS ===== */
+.matched-pair-analysis {
+  margin-top: 10px;
+  padding: 8px;
+  background: rgba(255,255,255,.03);
+  border-radius: 8px;
+  border: 1px solid rgba(96,165,250,.25);
+}
+
+/* 🔥 HIDE: "Trend: big | Best Rule: fallback_opposite_above" */
+.matched-pair-analysis > div:nth-child(2) {
+  display: none;
+}
+
+/* ===== CONSOLE ===== */
+.console-entry {
+  background: rgba(2,6,23,.85);
+  border-left: 3px solid #2563eb;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.console-status-win { color: #22c55e; }
+.console-status-loss { color: #ef4444; }
+.console-status-pending { color: #60a5fa; }
+
+  /* ===== PREDICT HISTORY TABLE FIX ===== */
+
+.prediction-history {
+  margin-top: 12px;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.history-table thead th {
+  text-align: left;
+  padding: 8px 10px;
+  color: #93c5fd;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(96,165,250,.35);
+}
+
+.history-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.history-table tbody tr:hover {
+  background: rgba(96,165,250,.05);
+}
+
+.history-table td {
+  padding: 6px 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Column alignment */
+.history-table td:nth-child(1) {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #e5e7eb;
+}
+
+.history-table td:nth-child(2) {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.history-table td:nth-child(3) {
+  text-align: center;
+  font-weight: 700;
+}
+
+.history-table td:nth-child(4) {
+  font-size: 0.72rem;
+  color: #facc15;
+}
+
+/* Result colors */
+.win-status {
+  color: #22c55e;
+}
+
+.loss-status {
+  color: #ef4444;
+}
+
+.pending-status {
+  color: #fbbf24;
+}
+
+/* Mobile safe */
+@media (max-width: 600px) {
+  .history-table {
+    font-size: 0.75rem;
+  }
+
+  .history-table td:nth-child(4) {
+    display: none; /* hide rule column on small screens */
+  }
+}
+
+/* 🔥 HIDE "RULE USED" COLUMN COMPLETELY */
+
+/* Hide header */
+.history-table th:nth-child(4) {
+  display: none;
+}
+
+/* Hide all rule-used cells */
+.history-table td:nth-child(4) {
+  display: none;
+}
+/* 🔥 HIDE PREDICTION CONSOLE (DETAILED LOG) COMPLETELY */
+.console-card {
+  display: none !important;
+}
+/* 🔥 HIDE RULE FREQUENCY ANALYSIS COMPLETELY */
+.rule-analysis {
+  display: none !important;
+}
+/* 🔥 HIDE RECENT RESULTS LIST */
+#recentResults {
+  display: none !important;
+}
+/* 🔥 HIDE PATTERN TABLE (text details) */
+.pattern-info {
+  display: none !important;
+}
+/* 🔥 HIDE ENTIRE RECENT RESULTS CARD */
+.dashboard .card:nth-child(2) {
+  display: none !important;
+}
+/* 🔥 CENTER CURRENT PREDICTION CARD AFTER HIDING RIGHT CARD */
+.dashboard {
+  grid-template-columns: 1fr !important;
+  justify-items: center;
+}
+
+.dashboard > .card {
+  width: 100%;
+  max-width: 520px; /* adjust if you want wider */
+}
+/* 🔥 HIDE PREDICTION STATUS BAR */
+#predictionStatus {
+  display: none !important;
+}
+/* 🔥 HIDE MATCHED PAIR ANALYSIS SECTION */
+.matched-pair-analysis {
+  display: none !important;
+
+}
+/* 🔥 HIDE COLOR & SIZE SECTION COMPLETELY */
+.prediction-details {
+  display: none !important;
+}
+/* 🔴 MAKE PERIOD & JACK NUMBERS RED */
+.prediction-box > .prediction-detail > div:first-child,
+.prediction-box > div:nth-of-type(2) {
+  color: #44ef66;
+  font-weight: 600;
+}
+/* 🔵 CENTER NEW SESSION BUTTON */
+.new-session-btn {
+  display: block;
+  margin: 16px auto 0 auto;
+}
+.win-loss-box {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(37,99,235,.12);
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.win-box {
+  color: #22c55e;
+}
+
+.loss-box {
+  color: #ef4444;
+}
+  body.light {
+    background: #f8fafc;
+    color: #020617;
+  }
+
+  body.light header,
+  body.light .card {
+    background: #ffffff;
+    color: #020617;
+    border-color: #2563eb;
+  }
+
+  body.light .prediction-box {
+    background: #f1f5f9;
+  }
+
+  body.light h1 {
+    background: linear-gradient(90deg, #2563eb, #ef4444);
+    -webkit-background-clip: text;
+    color: transparent;
+  
 
 </style>
 </head>
@@ -98,16 +409,11 @@ h1 {
 <audio id="soundLoss" src="https://23347-creator.github.io/sk-meowbaby/loss.mp3"></audio>
   <div class="container">
     <header class="ring-header">
-      <h1> HACK IS FOR SALE</h1>
+      <h1> MEOW BABY</h1>
       <p class="subtitle">
-         DM TELEGRAM ID
+         BLUEBEE SOMESH 07
       </p>
-          <p class="subtitle">
-         @Meowbaby0007
-      </p>
-      <div id="apiStatus">API: CHECKING...</div>
-</header>
-      <div id="apiStatus" style="
+      <div id="apiStatusBottom" style="
   margin-top:10px;
   font-size:0.8rem;
   font-weight:700;
@@ -115,3 +421,218 @@ h1 {
   padding:4px 10px;
   border-radius:20px;
 ">
+  API: CHECKING...
+</div>
+    </header>
+    <div class="dashboard">
+      <div class="card">
+        <h2>CURRENT PREDICTION</h2>
+        <div class="prediction-box">
+          <div class="prediction-detail">
+            <div>PERIOD</div>
+            <div class="detail-value" id="nextPeriodNumber">--</div>
+          </div>
+
+          <div class="label center" style="margin-top: 12px;">JACK NUMBERS</div>
+          <div class="prediction-value" id="predictedNumber">--</div>
+
+          <div class="prediction-details">
+            <div class="prediction-detail">
+              <div class="mini-label">COLOR</div>
+              <div class="detail-value" id="predictedColor">--</div>
+              
+            </div>
+            <div class="prediction-detail">
+              <div>SIZE</div>
+              <div class="detail-value" id="predictedSize">--</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="status" id="predictionStatus">Waiting for data...</div>
+
+        <button class="new-session-btn" id="newSessionBtn">REFRESH</button>
+        <div class="win-loss-box">
+  <div class="win-box">WIN: <span id="winCount">0</span></div>
+  <div class="loss-box">LOSS: <span id="lossCount">0</span></div>
+</div>
+        <div class="rule-analysis">
+          <h3>Rule Frequency Analysis</h3>
+          <div id="ruleFrequencyDisplay"></div>
+        </div>
+
+        <div class="matched-pair-analysis">
+          <h3>Matched Pair Analysis</h3>
+          <div id="matchedPairDisplay"></div>
+        </div>
+
+        <div class="prediction-history">
+          <h2 style="font-size: 1.1rem; margin-top: 10px;">PREDICT HISTORY</h2>
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>PERIOD NUMBER</th>
+                <th>PREDICTION</th>
+                <th>RESULT</th>
+                <th>Rule Used</th>
+              </tr>
+            </thead>
+            <tbody id="predictionHistoryBody">
+              <!-- History will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>RECENT RESULTS</h2>
+        <div class="recent-results" id="recentResults"></div>
+        <div class="pattern-info">
+          <h3>PATTERN</h3>
+          <div class="pattern-details" id="patternDetails"></div>
+          
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="card console-card">
+      <h2>Prediction Console (Detailed Log)</h2>
+      <p class="subtitle" style="font-size: 0.85rem; margin-top: 4px;">
+        Every prediction → time, period, size, pair, rule, trend, matched pair, violet, win/loss.
+      </p>
+      <div id="consolePanel" class="console-panel">
+        <!-- Console entries will be appended here -->
+      </div>
+    </div>
+
+    <div class="loading" id="loadingIndicator" style="display: none;">
+      <div class="spinner"></div>
+      <p>Fetching data and calculating prediction...</p>
+    </div>
+  </div>
+  
+<script>
+    
+const API_URL = "https://harshpredictor.site/api/api.php";
+
+let gameData = [];
+
+const predictedNumber = document.getElementById("predictedNumber");
+const predictedSize = document.getElementById("predictedSize");
+const predictionStatus = document.getElementById("predictionStatus");
+
+const matchedPair = {
+  below1: 0,
+  below2: 0,
+  above: 0
+};
+
+// ---------------- HELPERS ----------------
+function getSize(n) {
+  return n <= 4 ? "small" : "big";
+}
+function getColor(n) {
+  return [0,2,4,6,8].includes(n) ? "red" : "green";
+}
+function isViolet(n) {
+  return n === 0 || n === 5;
+}
+function oppositeSize(size) {
+  return size === "big" ? "small" : "big";
+}
+
+// ---------------- API ----------------
+async function fetchGameData() {
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+
+    document.getElementById("apiStatusBottom").innerText = "API: CONNECTED";
+    document.getElementById("apiStatusBottom").classList.add("api-ok");
+
+    return data;
+  } catch (e) {
+    document.getElementById("apiStatusBottom").innerText = "API: ERROR";
+    return null;
+  }
+}
+
+// ---------------- CORE LOGIC ----------------
+function applyYourLogic(L3, L4, B1, B2, ABOVE) {
+
+  const violetCount = [B1, B2].filter(isViolet).length;
+
+  if (violetCount === 2) return { skip: true };
+  if (L3 === B1 || L4 === B2) return { skip: true };
+
+  const sameColor = getColor(L3) === getColor(B1) && getColor(L4) === getColor(B2);
+  const sameSize  = getSize(L3) === getSize(B1)  && getSize(L4) === getSize(B2);
+
+  const aboveSize = getSize(ABOVE);
+
+  if (sameColor || sameSize) {
+    return { size: violetCount === 1 ? aboveSize : oppositeSize(aboveSize) };
+  }
+
+  return { size: aboveSize };
+}
+
+// ---------------- RUN ----------------
+async function startPrediction() {
+
+  const apiData = await fetchGameData();
+  if (!apiData || apiData.length < 4) return;
+
+  gameData = apiData.map(item => ({
+    number: parseInt(item.number),
+    period: item.issueNumber
+  }));
+
+  document.getElementById("nextPeriodNumber").innerText =
+    (BigInt(gameData[0].period) + 1n).toString();
+
+  matchedPair.below1 = gameData[1].number;
+  matchedPair.below2 = gameData[2].number;
+  matchedPair.above  = gameData[0].number;
+
+  runPredictionFromMatchedPair();
+}
+
+function runPredictionFromMatchedPair() {
+
+  const result = applyYourLogic(
+    gameData[2].number,
+    gameData[3]?.number ?? gameData[2].number,
+    matchedPair.below1,
+    matchedPair.below2,
+    matchedPair.above
+  );
+
+  if (result.skip) {
+    predictedNumber.innerText = "SKIP ❌";
+    predictionStatus.innerText = "Skip Signal";
+    predictionStatus.className = "status loss";
+    return;
+  }
+
+  const numbers =
+    result.size === "big" ? ["5", "7", "9"] : ["0", "2", "4"];
+
+  predictedNumber.innerText = numbers.join(" or ");
+  predictedSize.innerText = result.size;
+  predictionStatus.innerText = "Prediction Ready";
+  predictionStatus.className = "status win";
+}
+// 🔁 REFRESH BUTTON CLICK
+document.getElementById("newSessionBtn").addEventListener("click", () => {
+  document.getElementById("predictedNumber").innerText = "--";
+  document.getElementById("nextPeriodNumber").innerText = "--";
+  startPrediction();
+});
+// ▶️ START
+startPrediction();
+</script>
+</body>
+</html>
