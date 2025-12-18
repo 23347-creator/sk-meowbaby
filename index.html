@@ -462,41 +462,43 @@
 
   <script>
   const VALID_KEYS = [
-  "BULELORD01",
-  "BULELORD02",
-  "BULELORD03",
-  "BULELORD04",
-  "BULELORD05"
+  "BBE-LORD-001",
+  "BBE-LORD-002",
+  "BBE-LORD-003"
 ];
-  
+
+let USED_KEYS = JSON.parse(localStorage.getItem("usedKeys")) || [];
+
 function unlockApp() {
-  const input = document.getElementById("appPassword").value.trim();
+  const input = document
+    .getElementById("appPassword")
+    .value
+    .trim()
+    .toUpperCase();
+
   const error = document.getElementById("lockError");
 
-  // 1️⃣ Key valid-aa?
   if (!VALID_KEYS.includes(input)) {
     error.textContent = "❌ Invalid key";
     error.style.display = "block";
     return;
   }
 
-  // 2️⃣ Key already used-aa?
   if (USED_KEYS.includes(input)) {
     error.textContent = "❌ Key already used";
     error.style.display = "block";
     return;
   }
 
-  // 3️⃣ SUCCESS → mark key as used
   USED_KEYS.push(input);
   localStorage.setItem("usedKeys", JSON.stringify(USED_KEYS));
-
   localStorage.setItem("appUnlocked", "yes");
   localStorage.setItem("usedKey", input);
 
   document.getElementById("lockScreen").style.display = "none";
   document.body.style.overflow = "";
 }
+  
   
 // Remember unlock (next time direct open)
 if (localStorage.getItem("appUnlocked") === "yes") {
