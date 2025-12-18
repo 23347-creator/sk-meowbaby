@@ -4,996 +4,114 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SK BLUEBEE 1 MIN</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background: radial-gradient(circle at top, #020617 0%, #020024 40%, #000000 100%);
-      color: #e5e7eb;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .api-ok {
-      background: rgba(34, 197, 94, 0.15);
-      color: #22c55e;
-      border: 0.5px solid #22c55e;
-      margin-top: 5px;
-      padding: 4px 12px;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      display: inline-block;
-    }
-
-    /* HEADER */
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding: 20px;
-      background: linear-gradient(135deg, #020617, #0f172a);
-      border-radius: 18px;
-      border: 2px solid #2563eb;
-      box-shadow: 0 0 30px rgba(37, 99, 235, 0.45);
-      position: relative;
-    }
-
-    /* WIN DISCO GLOW */
-    .ring-header.win-disco::before {
-      content: "";
-      position: absolute;
-      inset: -4px;
-      border-radius: 22px;
-      background: linear-gradient(
-        45deg,
-        red,
-        blue,
-        cyan,
-        lime,
-        magenta,
-        yellow,
-        red
-      );
-      background-size: 500% 500%;
-      filter: blur(14px);
-      z-index: -1;
-      animation: winDisco 1.2s linear infinite;
-    }
-
-    @keyframes winDisco {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    h1 {
-      font-size: 2.3rem;
-      background: linear-gradient(90deg, #2563eb, #60a5fa, #ef4444);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: 1.5px;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: #93c5fd;
-      opacity: 0.85;
-      margin-bottom: 10px;
-    }
-
-    /* DASHBOARD */
-    .dashboard {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      justify-items: center;
-    }
+<style>
   
-.card {
-  background: radial-gradient(circle at top, rgba(15,23,42,.95), rgba(2,6,23,.95));
-  border-radius: 16px;
-  padding: 20px;
-  border: 1px solid rgba(96,165,250,.25);
-  box-shadow: 0 0 25px rgba(37,99,235,.25);
-  width: 100%;
-  max-width: 520px;
+  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-    .card h2 {
-      color: #60a5fa;
-      margin-bottom: 15px;
-      text-shadow: 0 0 8px rgba(96,165,250,.6);
-      font-size: 1.3rem;
-    }
 
-    /* PREDICTION BOX */
-    .prediction-box {
-      text-align: center;
-      padding: 20px;
-      background: radial-gradient(circle at top, rgba(37,99,235,.12), rgba(0,0,0,.95));
-      border-radius: 12px;
-      border: 1px solid rgba(37,99,235,.5);
-      box-shadow: 0 0 25px rgba(37,99,235,.45);
-      margin-bottom: 15px;
-    }
+body {
+  background: radial-gradient(circle at top, #020617 0%, #020024 40%, #000000 100%);
+  color: #e5e7eb;
+  min-height: 100vh;
+  padding: 20px;
+}
 
-    .prediction-value {
-      font-size: 2.7rem;
-      font-weight: bold;
-      color: #f8fafc;
-      text-shadow: 0 0 14px rgba(96,165,250,.8);
-      margin: 10px 0;
-    }
+  
+  .api-ok {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 0.5px solid #22c55e;
+    
+  margin-top: 5px;  
 
-    /* COLORS */
-    .red { color: #ef4444; }
-    .green { color: #22c55e; }
-    .violet { color: #a855f7; }
+  padding: 4px 12px;     /* 👈 size குறைச்சது */
+  border-radius: 8px;   /* 👈 small radius */
 
-    /* PREDICTION DETAILS */
-    .prediction-details {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(96,165,250,.2);
-    }
+  font-size: 0.75rem;    /* 👈 text small */
+  font-weight: 700;
+  letter-spacing: 0.3px;
 
-    .prediction-detail {
-      text-align: center;
-    }
+  display: inline-block;
+}
+  
+ 
+/* ===== HEADER ===== */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  border-radius: 18px;
+  border: 2px solid #2563eb;
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.45);
+}
+/* 🪩 WIN ONLY – DISCO GLOW */
+.ring-header.win-disco::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 22px;
+  background: linear-gradient(
+    45deg,
+    red,
+    blue,
+    cyan,
+    lime,
+    magenta,
+    yellow,
+    red
+  );
+  background-size: 500% 500%;
+  filter: blur(14px);
+  z-index: -1;
+  animation: winDisco 1.2s linear infinite;
+}
 
-    .prediction-detail .mini-label {
-      font-size: 0.8rem;
-      color: #93c5fd;
-      margin-bottom: 5px;
-    }
+@keyframes winDisco {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+h1 {
+  font-size: 2.3rem;
+  background: linear-gradient(90deg, #2563eb, #60a5fa, #ef4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 1.5px;
+}
 
-    .detail-value {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
+.subtitle {
+  color: #93c5fd;
+  opacity: 0.85;
+}
 
-    /* STATUS */
-    .status {
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: 600;
-      margin: 15px 0;
-    }
-
-    .win {
-      background: rgba(34,197,94,.15);
-      color: #22c55e;
-    }
-
-    .loss {
-      background: rgba(239,68,68,.15);
-      color: #ef4444;
-    }
-
-    /* BUTTON */
-    .new-session-btn {
-      background: linear-gradient(135deg, #2563eb, #ef4444);
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 9px;
-      font-weight: 700;
-      cursor: pointer;
-      display: block;
-      margin: 20px auto;
-      width: 200px;
-      transition: transform 0.2s;
-    }
-
-    .new-session-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    /* WIN/LOSS BOX */
-    .win-loss-box {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-      padding: 15px;
-      background: rgba(37,99,235,.12);
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    .win-box {
-      color: #22c55e;
-    }
-
-    .loss-box {
-      color: #ef4444;
-    }
-
-    /* PREDICTION HISTORY */
-    .prediction-history {
-      margin-top: 20px;
-    }
-
-    .history-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
-    .history-table thead th {
-      text-align: left;
-      padding: 10px;
-      color: #93c5fd;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(96,165,250,.35);
-    }
-
-    .history-table tbody tr {
-      border-bottom: 1px solid rgba(255,255,255,.05);
-    }
-
-    .history-table tbody tr:hover {
-      background: rgba(96,165,250,.05);
-    }
-
-    .history-table td {
-      padding: 8px 10px;
-      vertical-align: middle;
-    }
-
-    .win-status {
-      color: #22c55e;
-    }
-
-    .loss-status {
-      color: #ef4444;
-    }
-
-    .pending-status {
-      color: #fbbf24;
-    }
-
-    /* LOADING */
-    .loading {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #2563eb;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 600px) {
-      .card {
-        padding: 15px;
-      }
-      
-      h1 {
-        font-size: 1.8rem;
-      }
-      
-      .prediction-value {
-        font-size: 2rem;
-      }
-      
-      .win-loss-box {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-      }
-    }
-  </style>
+</style>
 </head>
 <body>
   <audio id="soundWin" src="https://23347-creator.github.io/sk-meowbaby/win.mp3"></audio>
-  <audio id="soundLoss" src="https://23347-creator.github.io/sk-meowbaby/loss.mp3"></audio>
-  
+<audio id="soundLoss" src="https://23347-creator.github.io/sk-meowbaby/loss.mp3"></audio>
   <div class="container">
     <header class="ring-header">
-      <h1>BLUE+LORD</h1>
-      <p class="subtitle">BLUEBEE 07 X LORD</p>
-      <div id="apiStatus" class="api-ok">API: CHECKING...</div>
-    </header>
-
-    <div class="dashboard">
-      <div class="card">
-        <h2>CURRENT PREDICTION</h2>
-        <div class="prediction-box">
-          <div class="prediction-detail">
-            <div class="mini-label">PERIOD</div>
-            <div class="detail-value" id="nextPeriodNumber">--</div>
-          </div>
-
-          <div style="margin: 15px 0; color: #facc15; font-weight: 600;">JACK NUMBERS</div>
-          <div class="prediction-value" id="predictedNumber">--</div>
-
-          <div class="prediction-details">
-            <div class="prediction-detail">
-              <div class="mini-label">COLOR</div>
-              <div class="detail-value" id="predictedColor">--</div>
-            </div>
-            <div class="prediction-detail">
-              <div class="mini-label">SIZE</div>
-              <div class="detail-value" id="predictedSize">--</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="status" id="predictionStatus">Waiting for data...</div>
-
-        <button class="new-session-btn" id="newSessionBtn">REFRESH</button>
-        
-        <div class="win-loss-box">
-          <div class="win-box">WIN: <span id="winCount">0</span></div>
-          <div class="loss-box">LOSS: <span id="lossCount">0</span></div>
-        </div>
-
-        <div class="prediction-history">
-          <h2>PREDICTION HISTORY</h2>
-          <table class="history-table">
-            <thead>
-              <tr>
-                <th>PERIOD</th>
-                <th>PREDICTION</th>
-                <th>RESULT</th>
-              </tr>
-            </thead>
-            <tbody id="predictionHistoryBody">
-              <!-- History will be populated here -->
-            </tbody>
-          </table>
-        </div>
-        
-
-
-<h2>PROFIT / LOSS CHART</h2>
-
-<div style="margin-bottom:10px; font-weight:700;">
-  Current P&amp;L:
-  <span id="currentPL" style="color:#22c55e;">₹0</span>
-</div>
-
-<canvas id="plChart" width="500" height="220"
-  style="width:100%; background:#020617; border-radius:12px;">
-</canvas>
-
-<div style="display:flex; gap:15px; margin-top:10px; font-size:0.85rem;">
-  <div style="color:#22c55e;">● Win (+₹20)</div>
-  <div style="color:#ef4444;">● Loss (−₹30)</div>
-  <div style="color:#facc15;">● Skip (₹0)</div>
-</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="loading" id="loadingIndicator" style="display: none;">
-    <div class="spinner"></div>
-    <p>Fetching data and calculating prediction...</p>
-  </div>
-
-  <script>
-    // ==============================================
-    // COLOR AND SIZE MAPPING
-    // ==============================================
-    const colorMap = {
-      '0': { color: 'red+violet', size: 'small', baseColor: 'red' },
-      '1': { color: 'green', size: 'small', baseColor: 'green' },
-      '2': { color: 'red', size: 'small', baseColor: 'red' },
-      '3': { color: 'green', size: 'small', baseColor: 'green' },
-      '4': { color: 'red', size: 'small', baseColor: 'red' },
-      '5': { color: 'green+violet', size: 'big', baseColor: 'green' },
-      '6': { color: 'red', size: 'big', baseColor: 'red' },
-      '7': { color: 'green', size: 'big', baseColor: 'green' },
-      '8': { color: 'red', size: 'big', baseColor: 'red' },
-      '9': { color: 'green', size: 'big', baseColor: 'green' }
-    };
-
-    // Helper functions
-    function getSize(number) {
-      return colorMap[number].size;
-    }
-    
-    function getBaseColor(number) {
-      return colorMap[number].baseColor;
-    }
-    
-    function hasViolet(number) {
-      return colorMap[number].color.includes("violet");
-    }
-    
-    function oppositeSize(size) {
-      return size === "big" ? "small" : "big";
-    }
-  
-
-    // ==============================================
-    // GAME DATA AND HISTORY
-    // ==============================================
-    let gameData = [];
-    let predictionHistory = JSON.parse(localStorage.getItem('predictionHistory')) || [];
-  function drawPLChart() {
-  const canvas = document.getElementById("plChart");
-  if (!canvas) return;
-
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  let pl = 0;
-  let values = [];
-
-  predictionHistory.slice().reverse().forEach(p => {
-    if (p.result === "Win ✅") pl += 20;
-    else if (p.result === "Loss ❌") pl -= 30;
-    values.push(pl);
-  });
-
-  const plText = document.getElementById("currentPL");
-  if (plText) {
-    plText.textContent = `₹${pl}`;
-    plText.style.color = pl >= 0 ? "#22c55e" : "#ef4444";
-  }
-
-  if (values.length < 2) return;
-
-  const pad = 20;
-  const max = Math.max(...values, 0);
-  const min = Math.min(...values, 0);
-  const range = max - min || 1;
-
-  const stepX = (canvas.width - pad * 2) / (values.length - 1);
-  const mapY = v =>
-    canvas.height - pad - ((v - min) / range) * (canvas.height - pad * 2);
-
-  // zero line
-  ctx.strokeStyle = "rgba(255,255,255,0.25)";
-  ctx.setLineDash([5, 5]);
-  ctx.beginPath();
-  ctx.moveTo(pad, mapY(0));
-  ctx.lineTo(canvas.width - pad, mapY(0));
-  ctx.stroke();
-  ctx.setLineDash([]);
-
-  // graph line
-  ctx.beginPath();
-  ctx.lineWidth = 3;
-  values.forEach((v, i) => {
-    const x = pad + i * stepX;
-    const y = mapY(v);
-    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-  });
-
-  ctx.strokeStyle = pl >= 0 ? "#22c55e" : "#ef4444";
-  ctx.stroke();
-}
-
-    // ==============================================
-    // YOUR PREDICTION LOGIC
-    // ==============================================
-    function predictNext() {
-      if (gameData.length < 4) {
-        return { status: "NO_DATA", error: "Need at least 4 results" };
-      }
-      // Get latest results (0 = most recent, 1 = second most recent, etc.)
-      const latest1 = gameData[0].number;  // Most recent
-      const latest2 = gameData[1].number;  // 2nd most recent
-      const latest3 = gameData[2].number;  // 3rd most recent
-      const latest4 = gameData[3].number;  // 4th most recent
-
-      // Find matching pairs in history
-      const matchedPairs = findMatchedPairs(latest1, latest2);
-      
-      if (matchedPairs.length === 0) {
-        return { 
-          status: "NO_MATCH", 
-          size: oppositeSize(getSize(latest1)), // Fallback: opposite of most recent
-          numbers: getNumbersForSize(oppositeSize(getSize(latest1)))
-        };
-      }
-
-      // Get the most recent matched pair
-      const latestMatchedPair = matchedPairs[0];
-      
-      // Get the numbers below the matched pair
-      const belowIndex1 = latestMatchedPair.index + 2;
-      const belowIndex2 = latestMatchedPair.index + 3;
-      
-      if (belowIndex2 >= gameData.length) {
-        return { 
-          status: "NO_DATA_BELOW", 
-          size: oppositeSize(getSize(latestMatchedPair.above.number)),
-          numbers: getNumbersForSize(oppositeSize(getSize(latestMatchedPair.above.number)))
-        };
-      }
-
-      const below1 = gameData[belowIndex1];
-      const below2 = gameData[belowIndex2];
-      const above = latestMatchedPair.above;
-
-      // Analyze matches
-      const analysis = analyzeMatches(latest3, latest4, below1.number, below2.number);
-      
-      // Apply rules based on analysis
-      const predictedSize = applyRules(analysis, above.number);
-      
-      // Check for skip conditions
-      if (shouldSkip(latest3, latest4, below1.number, below2.number, predictedSize)) {
-        return {
-          status: "SKIP",
-          size: oppositeSize(getSize(above.number)), // Skip: show opposite
-          numbers: getNumbersForSize(oppositeSize(getSize(above.number))),
-          rule: "Skip condition triggered"
-        };
-      }
-
-      return {
-        status: "OK",
-        size: predictedSize,
-        numbers: getNumbersForSize(predictedSize),
-        rule: analysis.ruleUsed,
-        analysis: analysis
-      };
-    }
-
-    // Find all matched pairs in history
-    function findMatchedPairs(num1, num2) {
-      const matchedPairs = [];
-      
-      // Start from index 2 to ensure we have space for "above" number
-      for (let i = 2; i < gameData.length - 1; i++) {
-        if (gameData[i].number === num1 && gameData[i + 1].number === num2) {
-          matchedPairs.push({
-            index: i,
-            above: gameData[i - 1],  // Number above the matched pair
-            below1: gameData[i + 2], // First number below the pair
-            below2: gameData[i + 3]  // Second number below the pair
-          });
-        }
-      }
-      
-      return matchedPairs;
-    }
-
-    // Analyze matches between latest 3rd/4th and matched pair below results
-    function analyzeMatches(latest3, latest4, below1, below2) {
-      // Check color matches
-      const colorMatchLatest = getBaseColor(latest3) === getBaseColor(latest4);
-      const colorMatchBelow = getBaseColor(below1) === getBaseColor(below2);
-      const colorMatchCross = (getBaseColor(latest3) === getBaseColor(below1)) && 
-                             (getBaseColor(latest4) === getBaseColor(below2));
-      
-      // Check size matches
-      const sizeMatchLatest = getSize(latest3) === getSize(latest4);
-      const sizeMatchBelow = getSize(below1) === getSize(below2);
-      const sizeMatchCross = (getSize(latest3) === getSize(below1)) && 
-                            (getSize(latest4) === getSize(below2));
-      
-      // Check color opposite
-      const colorOpposite = (getBaseColor(latest3) !== getBaseColor(below1)) && 
-                           (getBaseColor(latest4) !== getBaseColor(below2));
-      
-      // Check size opposite
-      const sizeOpposite = (getSize(latest3) !== getSize(below1)) && 
-                          (getSize(latest4) !== getSize(below2));
-      
-      // Check for violet colors
-      const violetCount = [below1, below2].filter(num => hasViolet(num)).length;
-      const hasOneViolet = violetCount === 1;
-      const hasTwoViolets = violetCount === 2;
-
-      return {
-        colorMatchCross,
-        sizeMatchCross,
-        colorOpposite,
-        sizeOpposite,
-        hasOneViolet,
-        hasTwoViolets,
-        violetCount,
-        ruleUsed: determineRule(colorMatchCross, sizeMatchCross, colorOpposite, sizeOpposite, hasOneViolet)
-      };
-    }
-
-    function determineRule(colorMatch, sizeMatch, colorOpposite, sizeOpposite, hasOneViolet) {
-      if (colorMatch && !sizeMatch && !hasOneViolet) return "Same color match without violet";
-      if (colorMatch && !sizeMatch && hasOneViolet) return "Same color match with 1 violet";
-      if (!colorMatch && sizeMatch && !hasOneViolet) return "Same size match without violet";
-      if (!colorMatch && sizeMatch && hasOneViolet) return "Same size match with 1 violet";
-      if (colorOpposite && !sizeOpposite && !hasOneViolet) return "Opposite color match without violet";
-      if (colorOpposite && !sizeOpposite && hasOneViolet) return "Opposite color match with 1 violet";
-      if (!colorOpposite && sizeOpposite && !hasOneViolet) return "Opposite size match without violet";
-      if (!colorOpposite && sizeOpposite && hasOneViolet) return "Opposite size match with 1 violet";
-      return "Fallback rule";
-    }
-
-    function applyRules(analysis, aboveNumber) {
-      const aboveSize = getSize(aboveNumber);
-      
-      // Apply your rules
-      if (analysis.colorMatchCross && !analysis.sizeMatchCross) {
-        if (!analysis.hasOneViolet) return "skip";
-        else return aboveSize; // Same as above
-      }
-      
-      if (!analysis.colorMatchCross && analysis.sizeMatchCross) {
-        if (!analysis.hasOneViolet) return oppositeSize(aboveSize); // Opposite of above
-        else return aboveSize; // Same as above
-      }
-      
-      if (analysis.colorOpposite && !analysis.sizeOpposite) {
-        if (!analysis.hasOneViolet) return aboveSize; // Same as above
-        else return oppositeSize(aboveSize); // Opposite of above
-      }
-      
-      if (!analysis.colorOpposite && analysis.sizeOpposite) {
-        if (!analysis.hasOneViolet) return aboveSize; // Same as above
-        else return oppositeSize(aboveSize); // Opposite of above
-      }
-      
-      // Two violets = skip
-      if (analysis.hasTwoViolets) return "skip";
-      
-      // Default fallback
-      return oppositeSize(aboveSize);
-    }
-
-    function shouldSkip(latest3, latest4, below1, below2, predictedSize) {
-      // Skip if predicted size is "skip"
-      if (predictedSize === "skip") return true;
-      
-      // Skip if same numbers in same positions
-      if ((latest3 === below1 && latest4 === below2) || 
-          (latest3 === below2 && latest4 === below1)) return true;
-      
-      // Skip if both color and size match
-      if ((getBaseColor(latest3) === getBaseColor(below1) && 
-           getBaseColor(latest4) === getBaseColor(below2)) &&
-          (getSize(latest3) === getSize(below1) && 
-           getSize(latest4) === getSize(below2))) return true;
-      
-      return false;
-    }
-
-    function getNumbersForSize(size) {
-      if (size === "small") {
-        // Small numbers: 0-4
-        const smallNumbers = ['0', '1', '2', '3', '4'];
-        // Return two random small numbers
-        const idx1 = Math.floor(Math.random() * smallNumbers.length);
-        let idx2;
-        do {
-          idx2 = Math.floor(Math.random() * smallNumbers.length);
-        } while (idx2 === idx1);
-        
-        return [smallNumbers[idx1], smallNumbers[idx2]];
-      } else {
-        // Big numbers: 5-9
-        const bigNumbers = ['5', '6', '7', '8', '9'];
-        // Return two random big numbers
-        const idx1 = Math.floor(Math.random() * bigNumbers.length);
-        let idx2;
-        do {
-          idx2 = Math.floor(Math.random() * bigNumbers.length);
-        } while (idx2 === idx1);
-        
-        return [bigNumbers[idx1], bigNumbers[idx2]];
-      }
-    }
-
-    // ==============================================
-    // UI ELEMENTS AND FUNCTIONS
-    // ==============================================
-    const predictedNumber = document.getElementById('predictedNumber');
-    const predictedColor = document.getElementById('predictedColor');
-    const predictedSize = document.getElementById('predictedSize');
-    const nextPeriodNumber = document.getElementById('nextPeriodNumber');
-    const predictionStatus = document.getElementById('predictionStatus');
-    const loadingIndicator = document.getElementById('loadingIndicator');
-    const predictionHistoryBody = document.getElementById('predictionHistoryBody');
-    const newSessionBtn = document.getElementById('newSessionBtn');
-    const winCountEl = document.getElementById('winCount');
-    const lossCountEl = document.getElementById('lossCount');
-    const apiStatusEl = document.getElementById('apiStatus');
-
-    // Get next period number
-    function getNextPeriod(currentPeriod) {
-      let periodStr = String(currentPeriod);
-      let prefix = periodStr.slice(0, -5);
-      let lastPart = periodStr.slice(-5);
-      let nextLastPart = String(Number(lastPart) + 1).padStart(5, '0');
-      return prefix + nextLastPart;
-    }
-
-    // New session
-    function startNewSession() {
-      predictionHistory = [];
-      localStorage.setItem('predictionHistory', JSON.stringify(predictionHistory));
-      renderPredictionHistory();
-      
-      updateWinLossCount();
-      predictionStatus.textContent = "New session started";
-      predictionStatus.className = "status win";
-      clearPredictionUI();
-    }
-
-    function clearPredictionUI() {
-      predictedNumber.textContent = "--";
-      predictedSize.textContent = "--";
-      predictedColor.textContent = "--";
-      nextPeriodNumber.textContent = "--";
-    }
-
-    // Update prediction history and check results
-    function updatePredictionHistory() {
-      if (gameData.length > 0) {
-        const currentPeriod = gameData[0].issueNumber;
-        const currentNumber = gameData[0].number;
-        const currentSize = getSize(currentNumber);
-        
-        
-
-        // Update pending predictions
-        predictionHistory.forEach(prediction => {
-          if (prediction.period === currentPeriod && prediction.result === "pending ⏳") {
-            const isWin = prediction.prediction === currentSize;
-            prediction.result = isWin ? "Win ✅" : "Loss ❌";
-
-            // Play sound and disco effect for win
-            const winSound = document.getElementById("soundWin");
-            const lossSound = document.getElementById("soundLoss");
-            const header = document.querySelector(".ring-header");
-
-            if (isWin) {
-              winSound.currentTime = 0;
-              winSound.play().catch(() => {});
-              header.classList.add("win-disco");
-              setTimeout(() => {
-                header.classList.remove("win-disco");
-              }, 5000);
-            } else {
-              lossSound.currentTime = 0;
-              lossSound.play().catch(() => {});
-              header.classList.remove("win-disco");
-            }
-          }
-        });
-
-        localStorage.setItem('predictionHistory', JSON.stringify(predictionHistory));
-updateWinLossCount();
-renderPredictionHistory();
-drawPLChart();
-        
-      }
-    }
-
-    function updateWinLossCount() {
-      const wins = predictionHistory.filter(p => p.result === "Win ✅").length;
-      const losses = predictionHistory.filter(p => p.result === "Loss ❌").length;
-      winCountEl.textContent = wins;
-      lossCountEl.textContent = losses;
-    }
-
-    function addPredictionToHistory(period, prediction) {
-      if (prediction.status === "OK" || prediction.status === "NO_MATCH" || prediction.status === "SKIP") {
-        const existing = predictionHistory.find(p => p.period === period);
-        if (!existing) {
-          predictionHistory.unshift({
-            period: period,
-            prediction: prediction.size,
-            result: "pending ⏳",
-            rule: prediction.rule || "No rule"
-          });
-
-          if (predictionHistory.length > 20) {
-            predictionHistory.pop();
-          }
-
-          localStorage.setItem('predictionHistory', JSON.stringify(predictionHistory));
-          renderPredictionHistory();
-          updateWinLossCount();
-          drawPLChart();
-        }
-      }
-    }
-
-    function renderPredictionHistory() {
-      predictionHistoryBody.innerHTML = '';
-
-      if (predictionHistory.length === 0) {
-        predictionHistoryBody.innerHTML =
-          '<tr><td colspan="3" style="text-align: center;">No prediction history yet</td></tr>';
-        return;
-      }
-
-      predictionHistory.forEach(prediction => {
-        const row = document.createElement('tr');
-
-        const periodCell = document.createElement('td');
-        periodCell.textContent = prediction.period;
-
-        const predictionCell = document.createElement('td');
-        predictionCell.textContent = prediction.prediction;
-
-        const resultCell = document.createElement('td');
-        resultCell.textContent = prediction.result;
-
-        if (prediction.result === "Win ✅") {
-          resultCell.className = 'win-status';
-        } else if (prediction.result === "Loss ❌") {
-          resultCell.className = 'loss-status';
-        } else {
-          resultCell.className = 'pending-status';
-        }
-
-        row.appendChild(periodCell);
-        row.appendChild(predictionCell);
-        row.appendChild(resultCell);
-        predictionHistoryBody.appendChild(row);
-      });
-    }
-
-    // Update UI with prediction
-function updatePredictionUI(prediction) {
-  if (prediction.status === "NO_DATA") {
-    predictedNumber.textContent = "--";
-    predictedSize.textContent = "--";
-    predictedColor.textContent = "--";
-    predictionStatus.textContent = "Waiting for more data...";
-    predictionStatus.className = "status";
-
-  } else if (prediction.status === "NO_MATCH") {
-    predictedNumber.textContent = prediction.numbers.join(" or ");
-    predictedSize.textContent = prediction.size;
-    predictedColor.textContent = getBaseColor(prediction.numbers[0]);
-    predictionStatus.textContent = "No matched pair found - Using fallback";
-    predictionStatus.className = "status";
-
-  } else if (prediction.status === "SKIP") {
-    predictedNumber.textContent = prediction.numbers.join(" or ");
-    predictedSize.textContent = prediction.size;
-    predictedColor.textContent = getBaseColor(prediction.numbers[0]);
-    predictionStatus.textContent = "Skip condition - Opposite shown";
-    predictionStatus.className = "status";
-
-  } else if (prediction.status === "OK") {
-    predictedNumber.textContent = prediction.numbers.join(" or ");
-    predictedSize.textContent = prediction.size;
-    predictedColor.textContent = getBaseColor(prediction.numbers[0]);
-    predictionStatus.textContent = `Prediction ready (${prediction.rule})`;
-    predictionStatus.className = "status win";
-  }
-
-  // ✅ NEXT PERIOD NUMBER — MUST BE INSIDE FUNCTION
-  if (gameData.length > 0) {
-    nextPeriodNumber.textContent = getNextPeriod(gameData[0].issueNumber);
-  } else {
-    nextPeriodNumber.textContent = "--";
-  }
-}
-      
-
-    // Fetch data from API
-    async function fetchData() {
-      try {
-        loadingIndicator.style.display = 'block';
-        
-        // Using your API endpoint
-        const response = await fetch('https://Harshpredictor.site/api/api.php', {
-          cache: "no-store",
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (data && data.data && data.data.list) {
-          gameData = data.data.list;
-          // Sort by issue number (most recent first)
-          gameData.sort((a, b) => Number(b.issueNumber) - Number(a.issueNumber));
-          
-          apiStatusEl.textContent = "API: CONNECTED";
-          apiStatusEl.className = "api-ok";
-          
-          return true;
-        } else {
-          throw new Error("Invalid data format");
-        }
-      } catch (error) {
-        console.error("API Error:", error);
-        apiStatusEl.textContent = "API: DOWN";
-        apiStatusEl.className = "loss";
-        predictionStatus.textContent = "API error. Please check connection.";
-        predictionStatus.className = "status loss";
-        return false;
-      } finally {
-        loadingIndicator.style.display = 'none';
-      }
-    }
-
-    // Main function to fetch and predict
-    async function fetchDataAndPredict() {
-      const success = await fetchData();
-      if (success) {
-        updatePredictionHistory();
-        const prediction = predictNext();
-        updatePredictionUI(prediction);
-        
-        if (gameData.length > 0) {
-          addPredictionToHistory(getNextPeriod(gameData[0].issueNumber), prediction);
-          
-        }
-      }
-    }
-
-    // Auto reload each minute + 8s
-    function setupPageReload() {
-      const now = new Date();
-      const msToNextMinutePlus8 = (60 - now.getSeconds()) * 1000 + 8000;
-      setTimeout(() => {
-        location.reload();
-      }, msToNextMinutePlus8);
-    }
-
-      // Render existing history
-      renderPredictionHistory();
-      
-      updateWinLossCount();
-      
-  drawPLChart();
-      // Set up button event
-      newSessionBtn.addEventListener('click', startNewSession);
-      
-      // Initial fetch and prediction
-      fetchDataAndPredict();
-      
-      // Set up auto-reload
-      setupPageReload();
-  
-
-    // Sound unlock for mobile
-    document.addEventListener("click", enableSound, { once: true });
-    document.addEventListener("touchstart", enableSound, { once: true });
-
-    function enableSound() {
-      const audio = new Audio();
-      audio.src = "https://23347-creator.github.io/sk-meowbaby/win.mp3";
-      audio.play().then(() => {
-        audio.pause();
-        audio.currentTime = 0;
-      }).catch(() => {});
-    }
-  </script>
-</body>
-</html>
+      <h1> HACK IS FOR SALE</h1>
+      <p class="subtitle">
+        UNDER 4LVL SURE DM TELEGRAM ID 
+      </p>
+          <p class="subtitle">
+         @Meowbaby0007
+      </p>
+      <div id="apiStatus">API: CHECKING...</div>
+</header>
+      <div id="apiStatus" style="
+  margin-top:10px;
+  font-size:0.8rem;
+  font-weight:700;
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+">
